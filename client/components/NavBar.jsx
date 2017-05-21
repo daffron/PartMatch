@@ -21,10 +21,17 @@ function NavBar (props) {
                 </ul>
                 <BrowserRouter>
                 <div className="col-sm-3 col-md-3 pull-right">
-        <form className="navbar-form" role="search" action="/searchsell" method="GET">
+        <form className="navbar-form" role="search" action="/searchresult.html" method="GET">
+            <select name="srchcat">
+                <option value="searchselling">For Sale</option>
+                <option value="searchwanted">Wanted</option>
+            </select>
+            
         <div className="input-group">
             <input type="text" className="form-control" placeholder="Search For Sale" name="srch" id="srch"/>
+
             <div className="input-group-btn">
+          
                 
                <button className="btn btn-default" type="submit"><i className="glyphicon glyphicon-search"></i></button>
             </div>

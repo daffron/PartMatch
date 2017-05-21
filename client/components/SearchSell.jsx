@@ -1,12 +1,19 @@
 import React from 'react'
 import {BrowserRouter,Link, Route} from 'react-router-dom'
 
-function SearchSell (props) {
-    console.log(props)
-    return (
-        <h3>search result to go here</h3>
-    )
+class SearchSell extends React.Component {
+    state = {
+        dbResult: []
+    }
 
+    componentDidMount(){    
+        fetch('/api/searchsell')
+        .then(response => response.json())
+        .then(result => this.setState({dbResult: result}))
+    }
+    render() {
+        const {dbResult} = this.State
+    }
 }
 
 export default SearchSell

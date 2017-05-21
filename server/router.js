@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+const database = require('../database/queries')
+
 const MongoClient = require('mongodb').MongoClient
 let db
 MongoClient.connect('mongodb://localhost:27017', (err, database) => {
@@ -10,11 +12,17 @@ MongoClient.connect('mongodb://localhost:27017', (err, database) => {
 
   
 
-router.get('/searchsell/', (req, res) => {
+router.get('/api/searchsell/', (req, res) => {
     db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
         let cursor= db.collection('listings').find().toArray( (err, results) => {
-            res.json(req.query.srch)
+            res.json(database.findAd(cursor, req.query.srch))
         })
+    })
+})
+
+router.get('/searchresult/', (req, res) => {
+    db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
+        res.sendFile('../public/searchresult.html')
     })
 })
 
