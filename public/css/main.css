@@ -1,0 +1,14 @@
+.bannerimage {
+    position: absolute;
+    min-width: 100%;
+    z-index: auto;
+}
+
+.form {
+    position: absolute;
+    z-index: 1;
+}
+
+.login {
+    text-align: center
+}
