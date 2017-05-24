@@ -13,20 +13,23 @@ MongoClient.connect('mongodb://localhost:27017', (err, database) => {
   
 
 router.get('/api/searchsell/', (req, res) => {
+   
     db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
         let cursor= db.collection('listings').find().toArray( (err, results) => {
-            res.json(database.findAd(cursor, req.query.srch))
+            res.json({result: results})
         })
     })
 })
 
-router.get('/searchresult/', (req, res) => {
+router.get('/api/searchwanted/', (req, res) => {
     db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
-        res.sendFile('../public/searchresult.html')
+        db.collection('wanted').find().toArray((err, results) => {
+            res.json({result: results})
+        })
     })
 })
 
-router.post('/newsell', (req, res) => {
+router.post('/newlisting', (req, res) => {
     db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
         db.collection('listings').save(req.body, (err, result) => {
             if (err) return console.log(err)

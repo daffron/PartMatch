@@ -1,0 +1,30 @@
+{
+    "listings" :[
+        { "title":"wheel",
+          "description":"wheel for sale",
+          "price": 45,
+          "location": "auckland",
+          "photo_urls":[],
+          "user_id":"123456",
+          "keywords": "wheel wheels car"
+          },
+          { 
+          "title":"tyre",
+          "description":"tyre for sale",
+          "price": 10,
+          "location": "auckland",
+          "photo_urls":[],
+          "user_id":"126856",
+          "keywords":"tyre 235 test"
+
+          },
+          {
+          "title":"light",
+          "description":"light for sale",
+          "price": 405,
+          "location": "auckland",
+          "photo_urls":[],
+          "user_id":"123444",
+          "keywords":"light honda bright"
+          }]
+}

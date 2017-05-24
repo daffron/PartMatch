@@ -12,3 +12,12 @@
 .login {
     text-align: center
 }
+
+.single-result {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.search-results {
+    margin-left: 30px;
+}

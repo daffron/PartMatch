@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   )
 })
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <SearchResult />,
-    document.getElementById('searchresult')
-  )
-})
+// document.addEventListener('DOMContentLoaded', () => {
+//   ReactDOM.render(
+//     <SearchResult />,
+//     document.getElementById('searchresult')
+//   )
+// })
