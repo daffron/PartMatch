@@ -1,13 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const database = require('../database/queries')
+
 
 const MongoClient = require('mongodb').MongoClient
 let db
 MongoClient.connect('mongodb://localhost:27017', (err, database) => {
   if (err) return console.log(err)
   db = database
+
 
 
   
@@ -29,13 +30,17 @@ router.get('/api/searchwanted/', (req, res) => {
     })
 })
 
-router.post('/newlisting', (req, res) => {
+
+router.post('/api/newlisting/', (req, res) => {
+
+        console.log("req : ", req.body)
+        const testObj = {testObjkey: "testObjValue"}
     db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
-        db.collection('listings').save(req.body, (err, result) => {
+        db.collection('testposting').save(testObj, (err, result) => {
             if (err) return console.log(err)
 
-            console.log('Listing saved to database')
-            res.redirect('/')
+            console.log('Listing saved to database', testObj)
+            res.json({})
         })
     })
 })

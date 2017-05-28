@@ -1,14 +1,15 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import SearchResult from './components/SearchResult'
-
+import { makeMainRoutes } from './components/Routes';
 import App from './components/App'
+
+const routes = makeMainRoutes()
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App />,
-    document.getElementById('app')
+    routes,
+    document.getElementById('root')
   )
 })
 

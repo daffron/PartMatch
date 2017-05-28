@@ -4,6 +4,7 @@ module.exports = {
 
 function findAd (database, keyword) {
     let arr = new Array
+    console.log(database)
     // database.find((result) => {
     //     if (result.title.contains(keyword) || result.description.contains(keyword) || result.keywords.conatins(keyword)) {
     //         arr.push(result)

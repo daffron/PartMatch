@@ -2,6 +2,7 @@ import React from 'react'
 import NewUser from './NewUser'
 import Search from'./Search'
 
+
 import {HashRouter as Router, BrowserRouter, Route, Link} from 'react-router-dom'
 
 function NavBar (props) {
@@ -19,12 +20,13 @@ function NavBar (props) {
                     <ul className="nav navbar-nav navbar-right">
                         <li><Link to ="/newu"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
                         <li><Link to ="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
+                     <Link to ={`/user/${props.testuser.userId}`} onClick={props.profileClick}><li>Profile</li></Link>
                 </ul>
-                <BrowserRouter>
+                <Router>
                 <div className="col-sm-3 col-md-3 pull-right">
        <Search searchFunc={props.searchFunc}/>
         </div>
-        </BrowserRouter>
+        </Router>
             </div>
         </nav>
     )
