@@ -1,4 +1,6 @@
 import request from 'superagent'
+const CLOUDINARY_UPLOAD_PRESET = 'listingimage'
+const CLOUDINARY_UPLOAD_URL = 	'https://api.cloudinary.com/v1_1/partmatch/upload'
 
 export function apiSearchSell( cb){
     request.get('/api/searchsell/')
@@ -75,3 +77,17 @@ export function apiNewForSale (obj){
         console.log(res)
     })
 }
+
+export function apiDeleteListing (id)  {
+    request.del(`/api/deletelisting/${id}`)
+    .then(data => {
+    const returnedPost = data.body
+    return returnedPost
+  })
+  .catch(err => {
+   console.error('Cannot DELETE a listing!')
+  })
+}
+
+
+

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, HashRouter as Router, Route} from 'react-router-dom'
-import {apiSearchSell, apiSearchWanted, apiGetSellListing, apiGetWantedListing} from '../api/'
+import {apiSearchSell, apiSearchWanted, apiGetSellListing, apiGetWantedListing, apiDeleteListing} from '../api/'
 import ProfileListing from './ProfileListing'
 import UserNewListing from './UserNewListing'
 
@@ -63,6 +63,10 @@ class Profile extends React.Component{
     })
   }
 
+  handleClick(id){
+      apiDeleteListing(id)
+      this.setState({})
+  }
 
 
 
@@ -84,7 +88,7 @@ class Profile extends React.Component{
             </div>
             <div className="row">
                 <div className="col-xs-4 col-md-4">
-                    {this.state.showListings&& <ProfileListing sellingAds={this.state.sellingAds}/>}
+                    {this.state.showListings&& <ProfileListing sellingAds={this.state.sellingAds} handleClick={this.handleClick.bind(this)}/>}
                 </div>
                 <div className="col-xs-4 col-md-4">
                     {this.state.displayListingForm&& <UserNewListing profileProps={this.props.user} removeForm={this.removeForm}/>}

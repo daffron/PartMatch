@@ -10,6 +10,7 @@ function ProfileListing (props) {
                     <ul key= {key}>
                         <li >{item.title}</li>
                         <li>${item.price}</li>
+                        <li><button  onClick={() => {props.handleClick(item._id)}}>Delete</button></li>
                     </ul>
              )
                     }))}

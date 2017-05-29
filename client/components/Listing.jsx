@@ -13,7 +13,7 @@ class Listing extends React.Component{
             description: '',
             user: '',
             price: 0,
-            imageUrls: [],
+            image_url: '',
             location: '',
             geoLocation:  []
         }
@@ -30,8 +30,8 @@ class Listing extends React.Component{
         const wantorsell = this.state.wantorsell
         const listingId = this.state.listingId
     if (wantorsell === 'selling!'){
-        
-            apiGetSellListing(listingId, (err, res) => {
+            console.log(listingId)
+            apiGetSellListing(this.props.match.params.id, (err, res) => {
                 if(err) {
                     console.log(err.message)
                 }
@@ -39,7 +39,8 @@ class Listing extends React.Component{
                     title: res.title,
                     description: res.description,
                     price: res.price ,
-                    location: res.location
+                    location: res.location,
+                    image_url: res.image_url
                 })
             })
         } else {
@@ -53,7 +54,7 @@ class Listing extends React.Component{
             
                 <div className="listing row">
                     <div className="col-sm-4">
-                        <img src="http://placehold.it/350x150"/>
+                        <img src={this.state.image_url}/>
                     </div>
                     <div className="col-sm-8">
                     <h1>{this.state.title}</h1>
