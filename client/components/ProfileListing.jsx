@@ -9,7 +9,7 @@ function ProfileListing (props) {
              return(
                     <ul key= {key}>
                         <li >{item.title}</li>
-                        <li>{item.price}</li>
+                        <li>${item.price}</li>
                     </ul>
              )
                     }))}

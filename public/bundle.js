@@ -5176,7 +5176,7 @@ function apiGetSellListing(id, cb) {
 
 function apiNewForSale(obj) {
     console.log(obj);
-    _superagent2.default.post('/api/newlisting/').send({ test: 'tested' }).end(function (err, res) {
+    _superagent2.default.post('/api/newlisting/').send(obj).end(function (err, res) {
         if (err) console.log(err);
         console.log(res);
     });
@@ -19117,7 +19117,7 @@ var Profile = function (_React$Component) {
         value: function showListings() {
             var _this2 = this;
 
-            var id = this.props.user.userId.toString();
+            var id = this.props.user.userId;
 
             (0, _api.apiSearchSell)(function (err, res) {
                 if (err) {
@@ -19183,7 +19183,7 @@ var Profile = function (_React$Component) {
                             _react2.default.createElement(
                                 'h3',
                                 null,
-                                'Post a new wanted ad'
+                                'Post a new sale ad'
                             )
                         )
                     ),
@@ -19193,7 +19193,7 @@ var Profile = function (_React$Component) {
                         _react2.default.createElement(
                             'h3',
                             null,
-                            'Post a new for sale ad'
+                            'Post a new for wanted ad'
                         )
                     )
                 ),
@@ -19264,6 +19264,7 @@ function ProfileListing(props) {
                 _react2.default.createElement(
                     'li',
                     null,
+                    '$',
                     item.price
                 )
             );

@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const bodyParser = require('body-parser')
 
 
+router.use(bodyParser.json())
 
 const MongoClient = require('mongodb').MongoClient
 let db
@@ -32,14 +34,11 @@ router.get('/api/searchwanted/', (req, res) => {
 
 
 router.post('/api/newlisting/', (req, res) => {
-
-        console.log("req : ", req.body)
-        const testObj = {testObjkey: "testObjValue"}
     db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
-        db.collection('testposting').save(testObj, (err, result) => {
+        db.collection('listings').save(req.body, (err, result) => {
             if (err) return console.log(err)
 
-            console.log('Listing saved to database', testObj)
+            console.log('Listing saved to database', req.body)
             res.json({})
         })
     })

@@ -32,7 +32,7 @@ class Profile extends React.Component{
   }
 
   showListings(){
-    const id = this.props.user.userId.toString()
+    const id = this.props.user.userId
    
 
     apiSearchSell((err, res) => {
@@ -76,10 +76,10 @@ class Profile extends React.Component{
                 <button onClick={this.showListings}><h3>View your current listings</h3></button>
                 </div>
                 <div className="col-xs-4 col-md-4">
-                    <button onClick={this.showListingForm}><h3>Post a new wanted ad</h3></button>
+                    <button onClick={this.showListingForm}><h3>Post a new sale ad</h3></button>
                 </div>
                 <div className="col-xs-4 col-md-4">
-                    <h3>Post a new for sale ad</h3>
+                    <h3>Post a new for wanted ad</h3>
                 </div>
             </div>
             <div className="row">

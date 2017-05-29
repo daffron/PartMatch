@@ -69,7 +69,7 @@ export function apiGetSellListing(id, cb){
 export function apiNewForSale (obj){
     console.log(obj)
     request.post('/api/newlisting/')
-    .send({test: 'tested'})
+    .send(obj)
     .end(( err, res) => {
         if (err) console.log(err)
         console.log(res)
