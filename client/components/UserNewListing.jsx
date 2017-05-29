@@ -77,7 +77,15 @@ class UserNewListing extends React.Component {
         <div>
             <form onSubmit={this.handleSubmit.bind(this)}>
             <input type="text" onChange={this.handleChange.bind(this)} placeholder="Title" name="title"/>
-            <input type="text" onChange={this.handleChange.bind(this)}  placeholder="Category" name="listing_category"/>
+            <select name="listing_category" onChange={this.handleChange.bind(this)}>
+              <option value="Engine & Driveline" selected>Engine & Driveline</option>
+              <option value="Exterior">Exterior</option>
+              <option value="Induction">Induction</option>
+              <option value="Interior">Interior</option>
+              <option value="Suspension & components">Suspension & components</option>
+              <option value="Safety Equipment">Safety Equipment</option>
+              <option value="Other">Other</option>
+            </select>
             <input type="currency" onChange={this.handleChange.bind(this)} placeholder="Price" name="price"/>
             <input type="text" onChange={this.handleChange.bind(this)} placeholder="City" name="location"/>
             <input type="text" onChange={this.handleChange.bind(this)} name="keywords" placeholder="keywords"/>

@@ -25,7 +25,7 @@ class Profile extends React.Component{
           displayListingForm: false,
           displaySuccess: true
       })
-  }
+  }S
   showListingForm(){
       this.setState({displayListingForm: true})
   
@@ -64,8 +64,10 @@ class Profile extends React.Component{
   }
 
   handleClick(id){
-      apiDeleteListing(id)
-      this.setState({})
+      apiDeleteListing(id,() => {
+      this.setState({
+      })
+     })
   }
 
 

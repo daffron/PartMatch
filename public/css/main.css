@@ -16,6 +16,8 @@
 .single-result {
     border-width: 1px;
     border-style: solid;
+    border-radius: 4px;
+    height: 175px;
 }
 
 .search-results {
@@ -28,4 +30,26 @@
 
 .profile-page-content {
     text-align: center;
+}
+
+.corner-ribbon{
+  width: 50px;
+  background: #e43;
+  position: relative;
+  top: 15px;
+  left: -20px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.imagepreviews {
+  margin-top: 20%;
+}
+
+.image-searchresult{
+  margin-bottom: 8%;
 }

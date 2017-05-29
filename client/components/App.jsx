@@ -3,7 +3,6 @@ import React from 'react'
 import NavBar from'./NavBar'
 import NewUser from './NewUser'
 import Banner from './Banner'
-import NewListing from './NewListing'
 import Footer from './Footer'
 import SearchResult from './SearchResult'
 import LogIn from './LogIn'
@@ -62,7 +61,9 @@ class App extends React.Component {
                 searchArray: findAd(res.result, term),
                 currentSearchTerm: term,
                 wantorsell: 'selling!',
-                displayListing: false
+                displayListing: false,
+                displayProfile: false
+                
             })
      
         })
@@ -109,7 +110,6 @@ class App extends React.Component {
         return (
             <Router>
                 <div className="app">
-                    <NewListing/>
                     <NavBar searchFunc={this.search} profileClick={this.profileClick} testuser={this.state.testuser}/>
                     {this.state.displayBanner && <Banner/>}
 

@@ -1,19 +1,20 @@
 module.exports = {
-    findAd
+  findAd
 }
 
 function findAd (database, keyword) {
-    let arr = new Array
-    console.log(database)
+  let arr = []
+  console.log(database)
+  keyword = keyword.toUpperCase()
     // database.find((result) => {
     //     if (result.title.contains(keyword) || result.description.contains(keyword) || result.keywords.conatins(keyword)) {
     //         arr.push(result)
     //     }
-    for (let i = 0; i<database.length; i++){
-        if(database[i].title.includes(keyword) || database[i].description.includes(keyword) || database[i].keywords.includes(keyword)){
-            arr.push(database[i])
-        }
+  for (let i = 0; i < database.length; i++) {
+    if (database[i].title.toUpperCase().includes(keyword) || database[i].description.toUpperCase().includes(keyword) || database[i].keywords.toUpperCase().includes(keyword)) {
+      arr.push(database[i])
     }
-        console.log(arr)
-    return arr    
-    }
+  }
+  console.log(arr)
+  return arr
+}

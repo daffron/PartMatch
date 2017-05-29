@@ -18,9 +18,9 @@ function NavBar (props) {
                         <li><a href="#">Browse For Sale</a></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        <li><Link to ="/newu"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
+                        <li><Link to ="/newu"><span className="glyphicon glyphicon-plus-sign"></span> Sign Up</Link></li>
                         <li><Link to ="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
-                     <Link to ={`/user/${props.testuser.userId}`} onClick={props.profileClick}><li>Profile</li></Link>
+                     <li><Link to ={`/user/${props.testuser.userId}`} onClick={props.profileClick}><span className="glyphicon glyphicon-user"></span>Profile</Link></li>
                 </ul>
                 <Router>
                 <div className="col-sm-3 col-md-3 pull-right">

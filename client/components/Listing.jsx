@@ -40,7 +40,8 @@ class Listing extends React.Component{
                     description: res.description,
                     price: res.price ,
                     location: res.location,
-                    image_url: res.image_url
+                    image_url: res.image_url,
+                    email: res.contactEmail
                 })
             })
         } else {
@@ -54,7 +55,7 @@ class Listing extends React.Component{
             
                 <div className="listing row">
                     <div className="col-sm-4">
-                        <img src={this.state.image_url}/>
+                        <img src={this.state.image_url} width="350"/>
                     </div>
                     <div className="col-sm-8">
                     <h1>{this.state.title}</h1>
@@ -65,7 +66,10 @@ class Listing extends React.Component{
                         <li>{this.state.description}</li>
                         <hr/>
                         <li>This item is located in {this.state.location}</li>
+                        <hr/>
+                        <li><a href={`mailto:${this.state.email}?Subject=${this.state.title}`}><span className="glyphicon glyphicon-envelope"></span>Send email</a></li>
                     </ul> 
+
                 </div>
                     </div>
             
