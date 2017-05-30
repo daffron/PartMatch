@@ -17,6 +17,7 @@ class Search extends React.Component {
         const category = this.state.searchCategory
         evt.preventDefault()
         this.props.searchFunc(term, category)
+        this.props.history.push('/results')
     }
 
     handleChange(evt){

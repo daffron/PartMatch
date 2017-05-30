@@ -7,13 +7,13 @@ import {HashRouter as Router, BrowserRouter, Route, Link} from 'react-router-dom
 
 function NavBar (props) {
     return (
-        <nav className="navbar navbar-inverse">
+        <nav className="navbar">
             <div className="container-fluid">
                 <div className="navbar-header">
                     <a className="navbar-brand" href="#">PartMatch</a>
                 </div>
                     <ul className="nav navbar-nav">
-                        <li className="active"><a href="#">Home</a></li>
+                        <li className="active"><a href="/">Home</a></li>
                         <li><a href="#">Browse Wanted</a></li>
                         <li><a href="#">Browse For Sale</a></li>
                     </ul>
@@ -24,7 +24,7 @@ function NavBar (props) {
                 </ul>
                 <Router>
                 <div className="col-sm-3 col-md-3 pull-right">
-       <Search searchFunc={props.searchFunc}/>
+       <Search searchFunc={props.searchFunc} history={props.history} />
         </div>
         </Router>
             </div>

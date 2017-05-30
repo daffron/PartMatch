@@ -79,4 +79,8 @@ router.delete('/api/deletelisting/:id', (req, res) => {
   })
 })
 
+// router.get('*', (req, res) => {
+//   res.send('Uh oh, Youve been 404\'d <br><a href="/">Go Back To Home</a>', 404)
+// })
+
 module.exports = router

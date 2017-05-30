@@ -15,15 +15,13 @@ import App from './App';
 
 export const makeMainRoutes = () => {
   return (
-      <BrowserRouter history={history} component={App}>
-        <div>
-          <Route path="/" render={(props) => <App/>} />
+      <BrowserRouter history={history} >
+          <App />
     
           {/*<Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 
           }}/>*/}
-        </div>
       </BrowserRouter>
   );
 }

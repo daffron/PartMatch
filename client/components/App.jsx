@@ -9,7 +9,7 @@ import LogIn from './LogIn'
 import Listing from './Listing'
 import Profile from './Profile'
 import { Navbar, Button } from 'react-bootstrap';
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 
 
 import {findAd} from '../../database/queries'
@@ -43,7 +43,6 @@ class App extends React.Component {
 
 
     search(term, category){
-        console.log(term, category)
         if(category === 'searchsell'){
             this.searchForSale(term)
         } else {
@@ -52,8 +51,6 @@ class App extends React.Component {
     }
 
     searchForSale(term){
-        console.log('searching listings collection for term :', term)
-        
         apiSearchSell((err, res) => {
             this.setState({
                 displayBanner: false,
@@ -63,14 +60,13 @@ class App extends React.Component {
                 wantorsell: 'selling!',
                 displayListing: false,
                 displayProfile: false
-                
+
             })
      
         })
     }
 
     searchWanted (term) {
-        console.log('searching wanted ads for term:' , term)
          apiSearchWanted((err, res) => {
             this.setState({
                 displaySearchResult: true,
@@ -84,7 +80,7 @@ class App extends React.Component {
         })
     }
 
-    viewListingClick (wantorsell, listingId) {
+    viewListingClick (){
         
         this.setState({
             displayBanner: false,
@@ -93,10 +89,11 @@ class App extends React.Component {
         
         })
 
+
     }
 
     profileClick() {
-        console.log('profile page')
+
         this.setState({
             displayBanner: false,
             displaySearchResult: false,
@@ -106,31 +103,48 @@ class App extends React.Component {
 
 
     render(){
+        console.log(this.state.displayListing)
 
         return (
-            <Router>
-                <div className="app">
-                    <NavBar searchFunc={this.search} profileClick={this.profileClick} testuser={this.state.testuser}/>
-                    {this.state.displayBanner && <Banner/>}
 
-                    {this.state.displaySearchResult && <SearchResult searchresult={this.state.searchArray} searchTerm={this.state.currentSearchTerm} wantorsell={this.state.wantorsell} viewListingClick={this.viewListingClick} wantorsell={this.state.wantorsell}/>}
+          <div className="app">
 
-                    {this.state.displayListing &&<Route path ={"/listing/:id"} render={(routeProps) =>  <Listing  wantorsell={this.state.wantorsell}{...routeProps}/>}/> }
-
-                    {this.state.displayProfile&& <Route path={"/user/:userId"} render={(appProps) => <Profile user={this.state.testuser}{...appProps}/>}/>}
+              <Route render={(routerProps) => <NavBar searchFunc={this.search} profileClick={this.profileClick} testuser={this.state.testuser} {...routerProps}/> } />
+  
+              <Route exact path="/" component={Banner} />
 
 
-                    <div className="row">
-                        <div className="col-sm-8">
-                        </div>
-                        <div className="col-sm-4">
-                            <Route path = "/newu" component={NewUser}/>
-                            <Route path ="/login" component={LogIn}/>
-                        </div>
-                    </div>
-                    <Footer/>
-                </div>   
-            </Router> 
+              <Route
+                path="/results"
+                render={(routerProps) =>
+                  <SearchResult
+                    searchresult={this.state.searchArray} 
+                    searchTerm={this.state.currentSearchTerm}
+                    wantorsell={this.state.wantorsell}
+                    viewListingClick={this.viewListingClick}
+                    wantorsell={this.state.wantorsell}
+                    {...routerProps}
+                  />
+                }
+              />
+
+
+              <Route path ={"/listing/:id"} render={(routeProps) => <Listing  wantorsell={this.state.wantorsell}{...routeProps}/> } />
+
+              <Route path={"/user/:userId"} render={(appProps) => <Profile user={this.state.testuser}{...appProps}/>}/>
+
+
+              <div className="row">
+                  <div className="col-sm-8">
+                  </div>
+                  <div className="col-sm-4">
+                      <Route path = "/newu" component={NewUser}/>
+                      <Route path ="/login" component={LogIn}/>
+                  </div>
+              </div>
+            
+          </div>   
+
         )
     }
 }
