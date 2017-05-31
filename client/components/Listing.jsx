@@ -68,6 +68,25 @@ class Listing extends React.Component{
                         <hr/>
                         <li>This item is located in {this.state.location}</li>
                         <hr/>
+                        <div id="paypal-button"></div>
+
+                                {
+                                    paypal.Button.render({
+
+                                        env: 'production', // Or 'sandbox',
+
+                                        commit: true, // Show a 'Pay Now' button
+
+                                        payment: function() {
+                                            // Set up the payment here
+                                        },
+
+                                        onAuthorize: function(data, actions) {
+                                            // Execute the payment here
+                                    }
+
+                                    }, '#paypal-button')
+                                }
                         <li><a href={`mailto:${this.state.email}?Subject=${this.state.title}`}><span className="glyphicon glyphicon-envelope"></span>Send email</a></li>
                     </ul> 
 
