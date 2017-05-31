@@ -1,6 +1,6 @@
 import React from 'react'
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
-import {apiGetSellListing, apiGetWantedListing} from '../api/'
+import {apiGetSellListing, apiGetWantedListing, apiMakeSold} from '../api/'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 
 class Listing extends React.Component{
@@ -45,7 +45,8 @@ class Listing extends React.Component{
                     location: res.location,
                     image_url: res.image_url,
                     email: res.contactEmail,
-                    paymentSuccess: false
+                    paymentSuccess: false,
+                    exampleUserId: 123456 //will come from JWT upon auth
                 })
             })
         } else {
@@ -62,6 +63,7 @@ class Listing extends React.Component{
         const onSuccess = (payment) => {
 			
             		console.log("The payment was successful!", payment);
+                apiMakeSold(this.state.exampleUserId, this.state.listingId)
                 this.setState({
                   paymentSuccess: true
                 })

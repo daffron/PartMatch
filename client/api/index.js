@@ -81,3 +81,26 @@ export function apiDeleteListing (id) {
     console.error(err)
   })
 }
+
+export function apiMakeSold (userId, listingId) {
+  return request.put(`/api/makelistingsold/${userId}`)
+  .send(listingId)
+  .then(data => {
+    return data.body
+  })
+  .catch(err => {
+    console.log(err.message)
+  })
+}
+
+export function apiFindUserBought (userId, cb) {
+  request.get(`/api/searchbought/${userId}`)
+    .end((err, res) => {
+      if (err) {
+        cb(err.message)
+        return
+      }
+      const result = res.body
+      cb(null, result)
+    })
+}

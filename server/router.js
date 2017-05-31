@@ -13,7 +13,7 @@ MongoClient.connect('mongodb://localhost:27017', (err, database) => {
   router.get('/api/searchsell/', (req, res) => {
     db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
       if (err) return console.log(err)
-      db.collection('listings').find().toArray((err, results) => {
+      db.collection('listings').find({sold_to_user: null}).toArray((err, results) => {
         if (err) return console.log(err)
         res.json({result: results})
       })
@@ -75,6 +75,28 @@ router.delete('/api/deletelisting/:id', (req, res) => {
       }
       // check result to see how many documents are deleted
       console.log('removed')
+    })
+  })
+})
+
+router.put('/api/makelistingsold/:id', (req, res) => {
+  const userId = req.params.id
+  const listingId = Object.keys(req.body)[0]
+  console.log(userId, listingId)
+  db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
+    if (err) console.log(err.message)
+    db.collection('listings').update({_id: ObjectId(listingId)}, {$set: {"sold_to_user": userId}})
+  })
+})
+
+
+router.get('/api/searchbought/:userId', (req, res) => {
+  const userId = req.params.userId
+  db.authenticate(process.env.DB_USER, process.env.DB_PW, (err, result) => {
+    if (err) return console.log(err)
+    db.collection('listings').find({sold_to_user: userId}).toArray((err, results) => {
+      if (err) return console.log(err)
+      res.json({result: results})
     })
   })
 })
