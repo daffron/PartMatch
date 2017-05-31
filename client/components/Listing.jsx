@@ -1,6 +1,7 @@
 import React from 'react'
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import {apiGetSellListing, apiGetWantedListing} from '../api/'
+import PaypalExpressBtn from 'react-paypal-express-checkout';
 
 class Listing extends React.Component{
     constructor(props){
@@ -18,6 +19,8 @@ class Listing extends React.Component{
             geoLocation:  []
         }
         this.listingDetails = this.listingDetails.bind(this)
+        // this.onSuccess = this.onSuccess.bind(this)
+       
     }
 
     //on componentDidMount make a database query to find the listing details using listing_id, and find the user using session and another datatbase call
@@ -41,7 +44,8 @@ class Listing extends React.Component{
                     price: res.price ,
                     location: res.location,
                     image_url: res.image_url,
-                    email: res.contactEmail
+                    email: res.contactEmail,
+                    paymentSuccess: false
                 })
             })
         } else {
@@ -51,7 +55,31 @@ class Listing extends React.Component{
 
 
     render(){
-      console.log('running')
+        const client = {
+            sandbox:    'AbTTgTAlevqJz2q4DDUVsM4CjRk2b8MXPPR4CDdSPvs1pvT-DFLJzoNQXDAqzUNToqO5i5tSlGOR-tRg',
+            production: 'YOUR-PRODUCTION-APP-ID',
+        } 
+        const onSuccess = (payment) => {
+			
+            		console.log("The payment was successful!", payment);
+                this.setState({
+                  paymentSuccess: true
+                })
+                    
+        }		
+        
+        const onCancel = (data) => {
+          // User pressed "cancel" or close Paypal's popup!
+          console.log('The payment was cancelled!', data);
+          // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
+        }	
+        
+        const onError = (err) => {
+          // The main Paypal's script cannot be loaded or somethings block the loading of that script!
+          console.log("Error!", err);
+          // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
+          
+        }
         return(
             
                 <div className="listing row">
@@ -68,30 +96,17 @@ class Listing extends React.Component{
                         <hr/>
                         <li>This item is located in {this.state.location}</li>
                         <hr/>
-                        <div id="paypal-button"></div>
+                        <div id="paypal-button">
+                          <PaypalExpressBtn client={client} currency={'NZD'} total={Number(this.state.price)} onSuccess={onSuccess}/>
+                        </div>
+                        {this.state.paymentSuccess && <h1>Payment Successful!</h1>}
 
-                                {
-                                    paypal.Button.render({
-
-                                        env: 'production', // Or 'sandbox',
-
-                                        commit: true, // Show a 'Pay Now' button
-
-                                        payment: function() {
-                                            // Set up the payment here
-                                        },
-
-                                        onAuthorize: function(data, actions) {
-                                            // Execute the payment here
-                                    }
-
-                                    }, '#paypal-button')
-                                }
+                               
                         <li><a href={`mailto:${this.state.email}?Subject=${this.state.title}`}><span className="glyphicon glyphicon-envelope"></span>Send email</a></li>
                     </ul> 
 
                 </div>
-                    </div>
+              </div>
             
         )
     }

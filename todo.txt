@@ -1,1 +1,30 @@
-fix bug, were last listing loads
+fix bug where listing lags - done
+fix bug of not re-rendering currrent listings component upon deletion
+add to listing upload sold_to_user 
+add to search query, sold_to_user === null
+on successful payment, redirect to profile page, update db with sold_to_user info
+abilty to view all items user has bought
+abilty to view all items user has sold
+set up wanted side of side
+add user auth, add user_id_token to users database
+use useridtoken to inject user details into listing forms
+add internal messaging system, Q&A?
+
+configure paypal for production, set up payment recievees based on email
+
+add category search on homepage
+add search refine
+
+setup mongoDb for production
+
+method to buy item for pick up
+method to add postage costs to  listing
+
+Matching algorithm based on location, keywords & price to pair selling and listing items,  alert both users
+
+styling, lots of styling...
+
+add feedback to users collection, abilty to leave feedback in sold, bought listings
+
+Secure site, validation, encoding etc
+

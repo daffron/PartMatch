@@ -22,7 +22,9 @@ class UserNewListing extends React.Component {
                 image_url: '',
                 contactNo: this.props.profileProps.number,
                 contactEmail: this.props.profileProps.email,
-                uploadedFileCloudinaryUrl: ''
+                uploadedFileCloudinaryUrl: '',
+                sold: false,
+                sold_to_user: ''
                 
 
         }

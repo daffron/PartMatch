@@ -74,7 +74,7 @@ class Profile extends React.Component{
 
   render(){
       return (
-   
+        <div>
           <div className="profile-page">
             <h1>Welcome back, {this.props.user.username}</h1>
             <div className="row profile-page-content">
@@ -82,10 +82,22 @@ class Profile extends React.Component{
                 <button onClick={this.showListings}><h3>View your current listings</h3></button>
                 </div>
                 <div className="col-xs-4 col-md-4">
-                    <button onClick={this.showListingForm}><h3>Post a new sale ad</h3></button>
+                    <button onClick={this.showListingForm}><h3>Post a new for sale ad</h3></button>
                 </div>
                 <div className="col-xs-4 col-md-4">
-                    <h3>Post a new for wanted ad</h3>
+                    <button><h3>Post a new wanted ad</h3></button>
+                </div>
+            </div>
+            <hr/>
+             <div className="row profile-page-content">
+                <div className="col-xs-4 col-md-4">
+                <button><h3>Items you've bought</h3></button>
+                </div>
+                <div className="col-xs-4 col-md-4">
+                    <button><h3>Items you've sold</h3></button>
+                </div>
+                <div className="col-xs-4 col-md-4">
+                    <button><h3>Profile Settings</h3></button>
                 </div>
             </div>
             <div className="row">
@@ -98,7 +110,7 @@ class Profile extends React.Component{
                 </div>
             </div>
         </div>
- 
+      </div>
     )
   }
 }
