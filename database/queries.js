@@ -12,5 +12,9 @@ function findAd (database, keyword) {
     }
   }
   console.log(arr)
-  return arr
+  if (arr.length < 1) {
+    return ['no']
+  } else {
+    return arr
+  }
 }

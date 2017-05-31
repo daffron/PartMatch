@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Intro (props) {
+  return (
   <div>
     <div class="container-fluid slideanim backgroundtwo topmargin" id="about">
     <div class="row">
@@ -34,6 +35,7 @@ function Intro (props) {
     </div>
   </div>
   </div>
+  )
 
 }
 

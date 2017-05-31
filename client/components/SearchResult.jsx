@@ -7,6 +7,7 @@ console.log(props)
 
       <div className="searchresults row">
           <h1>Search Results for {props.searchTerm}</h1>
+          {props.searchresult[0] === 'no' && <h2>No results found for{props.searchTerm}</h2>}
           {props.searchresult.map((item,key) => {
               return(
               <div key={item._id} className="single-result col-xs-2">

@@ -111,7 +111,7 @@ class App extends React.Component {
 
               <Route render={(routerProps) => <NavBar searchFunc={this.search} profileClick={this.profileClick} testuser={this.state.testuser} {...routerProps}/> } />
   
-              <Route exact path="/" component={Banner} />
+              <Route exact path="/" component={Banner}/>
 
 
               <Route
