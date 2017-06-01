@@ -8,6 +8,7 @@ import SearchResult from './SearchResult'
 import LogIn from './LogIn'
 import Listing from './Listing'
 import Profile from './Profile'
+import ViewSold from './ViewSold'
 import { Navbar, Button } from 'react-bootstrap';
 import {Route, Link} from 'react-router-dom'
 
@@ -132,7 +133,7 @@ class App extends React.Component {
               <Route path ={"/listing/:id"} render={(routeProps) => <Listing  wantorsell={this.state.wantorsell}{...routeProps}/> } />
 
               <Route path={"/user/:userId"} render={(appProps) => <Profile user={this.state.testuser}{...appProps}/>}/>
-
+              <Route path={"/soldlisting/"}  component={ViewSold}/>
 
               <div className="row">
                   <div className="col-sm-8">

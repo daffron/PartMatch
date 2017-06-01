@@ -111,7 +111,7 @@ class Profile extends React.Component{
                     {this.state.displaySuccess&& <h3>Oh Yea!, Your listing is online!</h3>}
                 </div>
                 <div className="col-xs-4 col-md-4">
-                  {this.state.showBought && <UserBought listings={this.state.bought}/>}
+                  {this.state.showBought && <UserBought listings={this.state.bought} props={this.props}/>}
                 </div>
 
             </div>
