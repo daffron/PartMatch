@@ -33,9 +33,9 @@ export function apiGetWantedListing (id, cb) {
        }
        const result = res.body
        let listing
-       result.result.find((item => {
-         if (item._id === id) {
-           listing = item
+       result.result.find((eachListing => {
+         if (eachListing._id === id) {
+           listing = eachListing
          }
        }))
        cb(null, listing)
@@ -51,9 +51,9 @@ export function apiGetSellListing (id, cb) {
        }
        const result = res.body
        let listing
-       result.result.find((item => {
-         if (item._id === id) {
-           listing = item
+       result.result.find((eachListing => {
+         if (eachListing._id === id) {
+           listing = eachListing
          }
        }))
        cb(null, listing)
